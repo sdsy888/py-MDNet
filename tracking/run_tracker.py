@@ -187,15 +187,16 @@ def run_mdnet(img_list, init_bbox, gt=None, savefig_dir='', display=False):
         ax = plt.Axes(fig, [0., 0., 1., 1.])
         ax.set_axis_off()
         fig.add_axes(ax)
-        im = ax.imshow(image, aspect='normal')
+        # im = ax.imshow(image, aspect='normal')
+        im = ax.imshow(image)
 
         if gt is not None:
             gt_rect = plt.Rectangle(tuple(gt[0,:2]),gt[0,2],gt[0,3], 
-                    linewidth=3, edgecolor="#00ff00", zorder=1, fill=False)
+                    linewidth=3, edgecolor="#00ff00", zorder=1, fill=False) # green
             ax.add_patch(gt_rect)
         
         rect = plt.Rectangle(tuple(result_bb[0,:2]),result_bb[0,2],result_bb[0,3], 
-                linewidth=3, edgecolor="#ff0000", zorder=1, fill=False)
+                linewidth=3, edgecolor="#ff0000", zorder=1, fill=False) # red
         ax.add_patch(rect)
 
         if display:
